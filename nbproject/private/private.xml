@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/D:/work%20bench/Agentpc2/AgentPC/src/agentpc/DBOperations/DBOperations.java</file>
+            <file>file:/D:/work%20bench/Agentpc2/AgentPC/src/agentpc/Interfaces/Rep_NewRep.java</file>
+            <file>file:/D:/work%20bench/Agentpc2/AgentPC/src/agentpc/Interfaces/Accountant_New.java</file>
+            <file>file:/D:/work%20bench/Agentpc2/AgentPC/src/agentpc/BusinessLogic/AgentDetails.java</file>
+            <file>file:/D:/work%20bench/Agentpc2/AgentPC/src/agentpc/BusinessLogic/AgentPC.java</file>
+            <file>file:/D:/work%20bench/Agentpc2/AgentPC/src/agentpc/Interfaces/LoginFrame.java</file>
+            <file>file:/D:/work%20bench/Agentpc2/AgentPC/src/agentpc/Interfaces/NewUser.java</file>
+            <file>file:/D:/work%20bench/Agentpc2/AgentPC/src/agentpc/Interfaces/AgentAccountSetting.java</file>
+            <file>file:/D:/work%20bench/Agentpc2/AgentPC/src/agentpc/Interfaces/ForgetPassword.java</file>
+            <file>file:/D:/work%20bench/Agentpc2/AgentPC/src/agentpc/Interfaces/ResetPassword.java</file>
+            <file>file:/D:/work%20bench/Agentpc2/AgentPC/src/agentpc/Interfaces/DeleteAccountant.java</file>
+            <file>file:/D:/work%20bench/Agentpc2/AgentPC/src/agentpc/BusinessLogic/AccountantDetails.java</file>
+            <file>file:/D:/work%20bench/Agentpc2/AgentPC/src/agentpc/Interfaces/DeleteRep.java</file>
+            <file>file:/D:/work%20bench/Agentpc2/AgentPC/src/agentpc/Interfaces/AgentSelectionWindow.java</file>
+            <file>file:/D:/work%20bench/Agentpc2/AgentPC/src/agentpc/BusinessLogic/RepDetails.java</file>
+            <file>file:/D:/work%20bench/Agentpc2/AgentPC/src/agentpc/Interfaces/EmployeeFrame.java</file>
+            <file>file:/D:/work%20bench/Agentpc2/AgentPC/src/agentpc/Interfaces/UpdateAccountant.java</file>
+            <file>file:/D:/work%20bench/Agentpc2/AgentPC/src/agentpc/Interfaces/UpdateRep.java</file>
+            <file>file:/D:/work%20bench/Agentpc2/AgentPC/src/agentpc/Interfaces/ViewAccountant.java</file>
+            <file>file:/D:/work%20bench/Agentpc2/AgentPC/src/agentpc/Interfaces/ViewRep.java</file>
+        </group>
+    </open-files>
+</project-private>
