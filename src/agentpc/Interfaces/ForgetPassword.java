@@ -294,7 +294,7 @@ public class ForgetPassword extends javax.swing.JFrame {
         final String messageText ="Your verification cord is :" + text;
         final String mailTo=txtMailAddress.getText();
         //final String mailTo="namalcreation@gmail.com"; //must refer the database
-        if(dbo.checkAgentEmail(mailTo)==0){
+        if(dbo.checkData("agentdetails","email",mailTo)==0){
             Properties props = new Properties();
             props.put("mail.smtp.auth","true");
             props.put("mail.smtp.starttls.enable","true");

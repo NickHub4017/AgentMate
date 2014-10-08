@@ -1,6 +1,6 @@
 package agentpc.Interfaces;
 
-import agentpc.BusinessLogic.RepDetails;
+import agentpc.BusinessLogic.UserDetails;
 import agentpc.DBOperations.DBOperations;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -10,7 +10,7 @@ public class DeleteRep extends javax.swing.JFrame {
     public DeleteRep() {
         initComponents();
     }
-    static RepDetails rp;
+     UserDetails rp;
     DBOperations dbops=new DBOperations();
     
     @SuppressWarnings("unchecked")
@@ -160,7 +160,7 @@ public class DeleteRep extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    public void setFields(RepDetails rep){
+    public void setFields(UserDetails rep){
         rp=rep;
         txtRegID.setText(rep.getRegid());
         txtFirstName.setText(rep.getFirstname());
@@ -172,7 +172,7 @@ public class DeleteRep extends javax.swing.JFrame {
     }
     
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        RepDetails std=new RepDetails();
+        UserDetails std=new UserDetails();
         std.setRegID(txtRegID.getText());
         std.setFirstname(txtFirstName.getText());
         std.setLastname(txtLastName.getText());
@@ -181,7 +181,7 @@ public class DeleteRep extends javax.swing.JFrame {
         std.setCompany(txtCompany.getText());
         
         
-        if(dbops.deleteRep(this.rp)){
+        if(dbops.deleteUser("rep",this.rp)){
             JOptionPane.showMessageDialog(this, "Successfully deleted!");
             this.dispose();
             return;

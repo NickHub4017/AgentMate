@@ -1,6 +1,6 @@
 package agentpc.Interfaces;
 
-import agentpc.BusinessLogic.AccountantDetails;
+import agentpc.BusinessLogic.UserDetails;
 import agentpc.DBOperations.DBOperations;
 
 
@@ -9,7 +9,7 @@ public class ViewAccountant extends javax.swing.JFrame {
     public ViewAccountant() {
         initComponents();
     }
-    AccountantDetails dbops=new AccountantDetails();
+    UserDetails dbops=new UserDetails();
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -147,7 +147,7 @@ public class ViewAccountant extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    public void setFields(AccountantDetails acc){
+    public void setFields(UserDetails acc){
         txtRegID.setText(acc.getRegid());
         txtFirstName.setText(acc.getFirstname());
         txtLastName.setText(acc.getLastname());

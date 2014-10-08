@@ -3,12 +3,12 @@ package agentpc.BusinessLogic;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 
-public class AccTableModel extends AbstractTableModel{
+public class UserTableModel extends AbstractTableModel{
     
-    private static final String[] COLUMN_NAMES={"RegcID","First Name","Last Name","Company","Email"};
-    private static ArrayList<AccountantDetails> list;
+    private  final String[] COLUMN_NAMES={"RegcID","First Name","Last Name","Company","Email"};
+    private  ArrayList<UserDetails> list;
 
-    public AccTableModel(ArrayList<AccountantDetails> stdList) {
+    public UserTableModel(ArrayList<UserDetails> stdList) {
         list=stdList;
     }
     

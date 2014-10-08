@@ -1,6 +1,6 @@
 package agentpc.Interfaces;
 
-import agentpc.BusinessLogic.AccountantDetails;
+import agentpc.BusinessLogic.UserDetails;
 import agentpc.DBOperations.DBOperations;
 import javax.swing.JOptionPane;
 
@@ -43,11 +43,11 @@ public class Accountant_New extends javax.swing.JFrame {
 
             //int Age = Integer.parseInt(txtAge.getText());
 
-            int x = dbo.AccountantcheckUsername(txtUsername.getText());
-            AccountantDetails ed = new AccountantDetails();
+            int x = dbo.checkData("accountant","username",txtUsername.getText());
+            UserDetails ed = new UserDetails();
 
             if (x == 1) {
-                ed.setRegid();
+                ed.setRegid("accountant");
                 ed.setFirstname(txtFirstname.getText());
                 ed.setLastname(txtLastname.getText());
                 ed.setAge(Integer.parseInt(txtAge.getText().toString()));
@@ -56,7 +56,7 @@ public class Accountant_New extends javax.swing.JFrame {
                 ed.setUsername(txtUsername.getText());
                 ed.setPassword(NewUser.encrypt(txtPassword.getText()));
 
-                boolean result = dbo.addAccountant(ed);
+                boolean result = dbo.addUser("accountant",ed);
                 
                 if (result = true) {
                     JOptionPane.showMessageDialog(this, "Successfully Inserted");

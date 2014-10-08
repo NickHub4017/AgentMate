@@ -159,7 +159,7 @@ public class LoginFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        int x=dbo.AgentcheckLogin(txtUsername.getText(), NewUser.encrypt(txtPassword.getText()));
+        int x=dbo.checkLogin("agentdetails",txtUsername.getText(), NewUser.encrypt(txtPassword.getText()));
         
         AgentSelectionWindow asWin=new AgentSelectionWindow();
         if(x==0){

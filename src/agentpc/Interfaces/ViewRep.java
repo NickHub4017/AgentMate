@@ -1,6 +1,6 @@
 package agentpc.Interfaces;
 
-import agentpc.BusinessLogic.RepDetails;
+import agentpc.BusinessLogic.UserDetails;
 import agentpc.DBOperations.DBOperations;
 
 
@@ -9,7 +9,7 @@ public class ViewRep extends javax.swing.JFrame {
     public ViewRep() {
         initComponents();
     }
-    RepDetails rp;
+    UserDetails rp;
     DBOperations dbops=new DBOperations();
     
     @SuppressWarnings("unchecked")
@@ -148,7 +148,7 @@ public class ViewRep extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    public void setFields(RepDetails rep){
+    public void setFields(UserDetails rep){
         txtRegID.setText(rep.getRegid());
         txtFirstName.setText(rep.getFirstname());
         txtLastName.setText(rep.getLastname());

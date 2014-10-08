@@ -1,9 +1,7 @@
 package agentpc.Interfaces;
 
-import agentpc.BusinessLogic.AccTableModel;
-import agentpc.BusinessLogic.AccountantDetails;
-import agentpc.BusinessLogic.RepDetails;
-import agentpc.BusinessLogic.RepTableModel;
+import agentpc.BusinessLogic.UserDetails;
+import agentpc.BusinessLogic.UserTableModel;
 import agentpc.DBOperations.DBOperations;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
@@ -12,8 +10,8 @@ import javax.swing.JFrame;
 
 public class EmployeeFrame extends javax.swing.JFrame {
     
-    ArrayList<RepDetails> stList;
-    ArrayList<AccountantDetails> acList;
+    ArrayList<UserDetails> stList;
+    ArrayList<UserDetails> acList;
     DBOperations dbo=new DBOperations();
     //Accountant_DBOperations dbo2=new Accountant_DBOperations();
     
@@ -24,14 +22,14 @@ public class EmployeeFrame extends javax.swing.JFrame {
     }
     
     void loadRep(){
-        stList=dbo.getRep();
-        RepTableModel stDetails=new RepTableModel(stList);
+        stList=dbo.getUser("rep");
+        UserTableModel stDetails=new UserTableModel(stList);
         tblRep.setModel(stDetails);
     }
     void loadAccountant(){
-        acList=dbo.getAccountant();
-        AccTableModel stDetails=new AccTableModel(acList);
-        tblAccountant.setModel(stDetails);
+        acList=dbo.getUser("accountant");
+        UserTableModel acDetails=new UserTableModel(acList);
+        tblAccountant.setModel(acDetails);
     }
     
     @SuppressWarnings("unchecked")

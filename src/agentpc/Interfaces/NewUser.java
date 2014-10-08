@@ -1,6 +1,6 @@
 package agentpc.Interfaces;
 
-import agentpc.BusinessLogic.AgentDetails;
+import agentpc.BusinessLogic.UserDetails;
 import agentpc.DBOperations.DBOperations;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -47,11 +47,11 @@ public class NewUser extends javax.swing.JFrame {
 
             //int Age = Integer.parseInt(txtAge.getText());
 
-            int x = dbo.AgentcheckUsername(txtUsername.getText());
-            AgentDetails ed = new AgentDetails();
+            int x = dbo.checkData("agentdetails","username",txtUsername.getText());
+            UserDetails ed = new UserDetails();
 
             if (x == 1) {
-                ed.setRegid();
+                ed.setRegid("agentdetals");
                 ed.setFirstname(txtFirstname.getText());
                 ed.setLastname(txtLastname.getText());
                 ed.setAge(Integer.parseInt(txtAge.getText().toString()));
@@ -60,7 +60,7 @@ public class NewUser extends javax.swing.JFrame {
                 ed.setUsername(txtUsername.getText());
                 ed.setPassword(NewUser.encrypt(txtPassword.getText()));
 
-                boolean result = dbo.addAgent(ed);
+                boolean result = dbo.addUser("agentdetails",ed);
                 
                 if (result = true) {
                     JOptionPane.showMessageDialog(this, "Successfully Inserted");

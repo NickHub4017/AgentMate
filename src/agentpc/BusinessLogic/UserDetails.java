@@ -1,8 +1,19 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 package agentpc.BusinessLogic;
 
 import agentpc.DBOperations.DBOperations;
 
-public class RepDetails {
+/**
+ *
+ * @author Namal Jayasuriya
+ */
+public class UserDetails {
+    //private String table;
     private String regid;
     private String firstname;
     private String lastname;
@@ -13,19 +24,24 @@ public class RepDetails {
     private String password;
     
     //private static int autoIncrement=1;
+    
     DBOperations dbo=new DBOperations();
-
+    /*
+    public UserDetails(String table){
+    this.table=table;
+    }
+    */
     public String getRegid() {
         return regid;
     }
 
-    public void setRegid() {
+    public void setRegid(String table) {
         
-        this.regid ="RP0"+ dbo.RepcheckRegID();
+        this.regid ="AC0"+ dbo.checkRegID(table);
         //autoIncrement++;
     }
     public void setRegID(String regid) {
-        this.regid =regid;
+        this.regid=regid;
     }
 
     /**
@@ -118,5 +134,5 @@ public class RepDetails {
 
     public void setPassword(String password) {
         this.password = password;
-    }
+    }  
 }

@@ -1,6 +1,6 @@
 package agentpc.Interfaces;
 
-import agentpc.BusinessLogic.RepDetails;
+import agentpc.BusinessLogic.UserDetails;
 import agentpc.DBOperations.DBOperations;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -150,7 +150,7 @@ public class UpdateRep extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    public void setFields(RepDetails rep){
+    public void setFields(UserDetails rep){
         txtRegID.setText(rep.getRegid());
         txtFirstName.setText(rep.getFirstname());
         txtLastName.setText(rep.getLastname());
@@ -161,7 +161,7 @@ public class UpdateRep extends javax.swing.JFrame {
     }
     
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
-        RepDetails std=new RepDetails();
+        UserDetails std=new UserDetails();
         std.setRegID(txtRegID.getText());
         std.setFirstname(txtFirstName.getText());
         std.setLastname(txtLastName.getText());
@@ -170,7 +170,7 @@ public class UpdateRep extends javax.swing.JFrame {
         std.setCompany(txtCompany.getText());
         
         
-        if(dbops.updateRep(std)){
+        if(dbops.updateUser("rep",std)){
             JOptionPane.showMessageDialog(this, "Successfully update the record !");
             this.dispose();
             

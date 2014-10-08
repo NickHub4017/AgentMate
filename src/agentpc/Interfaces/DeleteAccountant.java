@@ -1,6 +1,6 @@
 package agentpc.Interfaces;
 
-import agentpc.BusinessLogic.AccountantDetails;
+import agentpc.BusinessLogic.UserDetails;
 import agentpc.DBOperations.DBOperations;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -10,7 +10,7 @@ public class DeleteAccountant extends javax.swing.JFrame {
     public DeleteAccountant() {
         initComponents();
     }
-    static AccountantDetails acc;
+     UserDetails acc;
     DBOperations dbops=new DBOperations();
     
     @SuppressWarnings("unchecked")
@@ -160,7 +160,7 @@ public class DeleteAccountant extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    public void setFields(AccountantDetails acc){
+    public void setFields(UserDetails acc){
         this.acc=acc;
         txtRegID.setText(acc.getRegid());
         txtFirstName.setText(acc.getFirstname());
@@ -172,7 +172,7 @@ public class DeleteAccountant extends javax.swing.JFrame {
     }
     
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        AccountantDetails std=new AccountantDetails();
+        UserDetails std=new UserDetails();
         std.setRegID(txtRegID.getText());
         std.setFirstname(txtFirstName.getText());
         std.setLastname(txtLastName.getText());
@@ -181,7 +181,7 @@ public class DeleteAccountant extends javax.swing.JFrame {
         std.setCompany(txtCompany.getText());
         
         
-        if(dbops.deleteAccountant(this.acc)){
+        if(dbops.deleteUser("accountant",this.acc)){
             JOptionPane.showMessageDialog(this, "Successfully deleted!");
             this.dispose();
             return;
