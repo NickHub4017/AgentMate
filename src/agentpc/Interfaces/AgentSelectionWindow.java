@@ -45,6 +45,11 @@ public class AgentSelectionWindow extends javax.swing.JFrame {
 
         btnAddItemToStore.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnAddItemToStore.setText("Add item to the store");
+        btnAddItemToStore.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddItemToStoreActionPerformed(evt);
+            }
+        });
 
         btnSalesReportGen.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnSalesReportGen.setText("Sales Report genaration");
@@ -53,16 +58,31 @@ public class AgentSelectionWindow extends javax.swing.JFrame {
         btnCreateNewRoute.setText("Create a new route");
 
         btnCreateNewCompany.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnCreateNewCompany.setText("Create new company");
+        btnCreateNewCompany.setText("Company");
+        btnCreateNewCompany.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateNewCompanyActionPerformed(evt);
+            }
+        });
 
         btnIssueItems1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnIssueItems1.setText("Issue Items");
+        btnIssueItems1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIssueItems1ActionPerformed(evt);
+            }
+        });
 
         btnComplainReportGen.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnComplainReportGen.setText("Complain Report genaration");
 
         btnMakeNewItem.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnMakeNewItem.setText("Make new item");
+        btnMakeNewItem.setText("Item");
+        btnMakeNewItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMakeNewItemActionPerformed(evt);
+            }
+        });
 
         btnOnDemandItems1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnOnDemandItems1.setText("On demand items");
@@ -235,6 +255,40 @@ public class AgentSelectionWindow extends javax.swing.JFrame {
         this.dispose();
         aaset.setVisible(true);
     }//GEN-LAST:event_btnVeiwRemainStock1ActionPerformed
+
+    private void btnMakeNewItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMakeNewItemActionPerformed
+        // TODO add your handling code here:
+        ItemTable it=new ItemTable();
+        it.pack();
+        it.setLocationRelativeTo(null);
+        it.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnMakeNewItemActionPerformed
+
+    private void btnCreateNewCompanyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateNewCompanyActionPerformed
+        // TODO add your handling code here:
+        CompanyFrame cf=new CompanyFrame();
+        cf.pack();
+        cf.setLocationRelativeTo(null);
+        cf.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnCreateNewCompanyActionPerformed
+
+    private void btnAddItemToStoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddItemToStoreActionPerformed
+        AddToStore ats=new AddToStore();
+        ats.pack();
+        ats.setLocationRelativeTo(null);
+        ats.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnAddItemToStoreActionPerformed
+
+    private void btnIssueItems1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIssueItems1ActionPerformed
+        IssueItem iitm = new IssueItem();
+        iitm.pack();
+        iitm.setLocationRelativeTo(null);
+        iitm.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnIssueItems1ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

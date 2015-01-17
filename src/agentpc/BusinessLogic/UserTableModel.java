@@ -11,7 +11,7 @@ public class UserTableModel extends AbstractTableModel{
     public UserTableModel(ArrayList<UserDetails> stdList) {
         list=stdList;
     }
-    
+
     
     @Override
     public int getRowCount(){

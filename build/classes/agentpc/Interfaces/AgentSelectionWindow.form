@@ -169,6 +169,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Add item to the store"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddItemToStoreActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnSalesReportGen">
           <Properties>
@@ -191,8 +194,11 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Create new company"/>
+            <Property name="text" type="java.lang.String" value="Company"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCreateNewCompanyActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnIssueItems1">
           <Properties>
@@ -201,6 +207,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Issue Items"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnIssueItems1ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnComplainReportGen">
           <Properties>
@@ -215,8 +224,11 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Make new item"/>
+            <Property name="text" type="java.lang.String" value="Item"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMakeNewItemActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnOnDemandItems1">
           <Properties>

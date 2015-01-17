@@ -34,6 +34,11 @@ public class DeleteRep extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Rep");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Delete Rep"));
 
@@ -192,6 +197,11 @@ public class DeleteRep extends javax.swing.JFrame {
             this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+
+        
+    }//GEN-LAST:event_formWindowClosed
 
     public static void main(String args[]) {
         

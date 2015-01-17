@@ -51,7 +51,7 @@ public class NewUser extends javax.swing.JFrame {
             UserDetails ed = new UserDetails();
 
             if (x == 1) {
-                ed.setRegid("agentdetals");
+                ed.setRegid("agentdetals","regid");
                 ed.setFirstname(txtFirstname.getText());
                 ed.setLastname(txtLastname.getText());
                 ed.setAge(Integer.parseInt(txtAge.getText().toString()));

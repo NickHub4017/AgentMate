@@ -181,7 +181,7 @@ public class DeleteAccountant extends javax.swing.JFrame {
         std.setCompany(txtCompany.getText());
         
         
-        if(dbops.deleteUser("accountant",this.acc)){
+        if(dbops.deleteRecord("accountant","regid",this.acc.getRegid())){
             JOptionPane.showMessageDialog(this, "Successfully deleted!");
             this.dispose();
             return;

@@ -6,6 +6,13 @@
 
 package agentpc.Interfaces;
 
+import agentpc.DBOperations.DBOperations;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Namal Jayasuriya
@@ -15,6 +22,7 @@ public class ResetPassword extends javax.swing.JFrame {
     /**
      * Creates new form ResetPassword
      */
+    DBOperations dbo=new DBOperations();
     public ResetPassword() {
         initComponents();
     }
@@ -31,12 +39,12 @@ public class ResetPassword extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtNewPassword = new javax.swing.JTextField();
-        txtConfirm = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         btnReset = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         txtUserName = new javax.swing.JTextField();
+        pfNewPassword = new javax.swing.JPasswordField();
+        pfConferm = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -70,9 +78,9 @@ public class ResetPassword extends javax.swing.JFrame {
                             .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtNewPassword)
-                            .addComponent(txtConfirm, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                            .addComponent(txtUserName)))
+                            .addComponent(txtUserName, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                            .addComponent(pfNewPassword)
+                            .addComponent(pfConferm)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(97, 97, 97)
                         .addComponent(jLabel3)))
@@ -93,12 +101,12 @@ public class ResetPassword extends javax.swing.JFrame {
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNewPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pfNewPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pfConferm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22)
                 .addComponent(btnReset)
                 .addGap(21, 21, 21))
@@ -124,11 +132,51 @@ public class ResetPassword extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private static MessageDigest md;
+    public static String encrypt(String pass){
+    try {
+        md = MessageDigest.getInstance("MD5");
+        byte[] passBytes = pass.getBytes();
+        md.reset();
+        byte[] digested = md.digest(passBytes);
+        StringBuffer sb = new StringBuffer();
+        for(int i=0;i<digested.length;i++){
+            sb.append(Integer.toHexString(0xff & digested[i]));
+        }
+        return sb.toString();
+    } catch (NoSuchAlgorithmException ex) {
+        Logger.getLogger(NewUser.class.getName()).log(Level.SEVERE, null, ex);
+    }
+        return null;
+
+
+   }
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         // TODO add your handling code here:
-        AgentSelectionWindow asw=new AgentSelectionWindow();
-        this.dispose();
-        asw.setVisible(true);
+        
+        if (dbo.checkData("agentdetails", "username",txtUserName.getText())==0) {
+            if(pfConferm.getText().equals(pfNewPassword.getText())) {
+                if(dbo.resetPassword(encrypt(pfConferm.getText()), txtUserName.getText())){
+                    JOptionPane.showMessageDialog(this, "Password Updated");
+                    AgentSelectionWindow asw=new AgentSelectionWindow();
+                    this.dispose();
+                    asw.setVisible(true);
+                }
+                
+          }
+            else{
+                pfConferm.setText(null);
+                pfNewPassword.setText(null);
+                JOptionPane.showMessageDialog(this, "Password Mismatch");
+            }
+            
+        }
+        else{
+                txtUserName.setText(null);
+                JOptionPane.showMessageDialog(this, "Username Mismatch");
+            }
+        
+        
         
     }//GEN-LAST:event_btnResetActionPerformed
 
@@ -174,8 +222,8 @@ public class ResetPassword extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txtConfirm;
-    private javax.swing.JTextField txtNewPassword;
+    private javax.swing.JPasswordField pfConferm;
+    private javax.swing.JPasswordField pfNewPassword;
     private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
 }

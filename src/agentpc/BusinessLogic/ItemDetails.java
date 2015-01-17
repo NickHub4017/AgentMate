@@ -189,16 +189,7 @@ public class ItemDetails {
     /**
      * @return the complin
      */
-    public String getComplin() {
-        return complain;
-    }
-
-    /**
-     * @param complin the complin to set
-     */
-    public void setComplin(String complin) {
-        this.complain = complin;
-    }
+    
 
     /**
      * @return the description

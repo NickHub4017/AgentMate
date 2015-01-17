@@ -21,14 +21,24 @@ public class EditItem extends javax.swing.JFrame {
     /**
      * Creates new form AddItem
      */
+    DBOperations dbo=new DBOperations();
     public EditItem() {
+        
         initComponents();
     }
     public void setFields(ItemDetails id){
+        
            this.lblItemID.setText(id.getItemID());
            this.txtItemName.setText(id.getItemName());
-           this.txtItemType.setText(id.getItemType());
-           this.txtCompany.setText(id.getSuplier());
+           
+            String items[]=dbo.getTypes("item","itemtype");
+            String company[]=dbo.getTypes("item","suplier");
+            for(int i=0;i<items.length;i++){
+            this.ddItemType.addItem(items[i]);
+            this.ddCompany.addItem(company[i]);
+            }
+           this.ddItemType.setSelectedItem(id.getItemType());
+           this.ddCompany.setSelectedItem(id.getSuplier());
            this.txtQuantity.setText(Integer.toString(id.getQuantity()));
            this.txtGetPrice.setText(Double.toString(id.getGetPrice()));
            this.txtSellingPrice.setText(Double.toString(id.getSelPrice()));
@@ -58,8 +68,6 @@ public class EditItem extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         txtItemName = new javax.swing.JTextField();
-        txtItemType = new javax.swing.JTextField();
-        txtCompany = new javax.swing.JTextField();
         txtGetPrice = new javax.swing.JTextField();
         txtLabledPrice = new javax.swing.JTextField();
         txtSellingDisc = new javax.swing.JTextField();
@@ -78,6 +86,8 @@ public class EditItem extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         lblItemID = new javax.swing.JLabel();
         btnCancel = new javax.swing.JButton();
+        ddItemType = new javax.swing.JComboBox();
+        ddCompany = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -112,18 +122,6 @@ public class EditItem extends javax.swing.JFrame {
         txtItemName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtItemNameActionPerformed(evt);
-            }
-        });
-
-        txtItemType.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtItemTypeActionPerformed(evt);
-            }
-        });
-
-        txtCompany.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCompanyActionPerformed(evt);
             }
         });
 
@@ -177,6 +175,8 @@ public class EditItem extends javax.swing.JFrame {
             }
         });
 
+        ddItemType.setEditable(true);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -191,14 +191,6 @@ public class EditItem extends javax.swing.JFrame {
                         .addGap(97, 97, 97)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel3)
-                                    .addGap(47, 47, 47)
-                                    .addComponent(txtItemType, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel4)
-                                    .addGap(51, 51, 51)
-                                    .addComponent(txtCompany, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(jLabel9)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel5)
@@ -212,7 +204,15 @@ public class EditItem extends javax.swing.JFrame {
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(jLabel1)
                                         .addComponent(txtItemName, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
-                                        .addComponent(lblItemID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                        .addComponent(lblItemID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel4)
+                                        .addComponent(jLabel3))
+                                    .addGap(47, 47, 47)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(ddItemType, 0, 167, Short.MAX_VALUE)
+                                        .addComponent(ddCompany, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                             .addComponent(txtSellingPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -267,17 +267,13 @@ public class EditItem extends javax.swing.JFrame {
                         .addComponent(jLabel2))
                     .addComponent(txtItemName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel3))
-                    .addComponent(txtItemType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(ddItemType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel4))
-                    .addComponent(txtCompany, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(ddCompany, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -328,14 +324,6 @@ public class EditItem extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtItemNameActionPerformed
 
-    private void txtItemTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtItemTypeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtItemTypeActionPerformed
-
-    private void txtCompanyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCompanyActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCompanyActionPerformed
-
     private void txtGetPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGetPriceActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtGetPriceActionPerformed
@@ -347,12 +335,13 @@ public class EditItem extends javax.swing.JFrame {
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
         ItemDetails id =new ItemDetails();
-        DBOperations dbo=new DBOperations();
+        
         boolean error=false;
         System.out.println(this.txtItemName.getText());
         
         
         
+        /*
         if(this.txtItemName.getText().equals("")){
             this.txtItemName.setText("cannot null");
             this.txtItemName.setForeground(Color.red);
@@ -402,20 +391,23 @@ public class EditItem extends javax.swing.JFrame {
         if (error==true){
             JOptionPane.showMessageDialog(null, "Marked Inputs cannot be null");
         }
-        else if(error==false){
-           id.setItemID("item","itemid",this.txtItemType.getText());
+        else if(error==false){*/
+           id.setItemID("item","itemid",this.ddItemType.getSelectedItem().toString());
            id.setItemName(this.txtItemName.getText().toLowerCase());
-           id.setItemType(this.txtItemType.getText().toLowerCase());
-           id.setSuplier(this.txtCompany.getText());
+           id.setItemType(this.ddItemType.getSelectedItem().toString().toLowerCase());
+           id.setSuplier(this.ddCompany.getSelectedItem().toString());
            id.setQuantity(Integer.parseInt(this.txtQuantity.getText()));
            id.setGetPrice(Double.parseDouble(this.txtGetPrice.getText()));
            id.setSelPrice(Double.parseDouble(this.txtSellingPrice.getText()));
            id.setLblPrice(Double.parseDouble(this.txtLabledPrice.getText()));
            id.setSalesDisc(Double.parseDouble(this.txtSellingDisc.getText()));
            id.setCompanyDisc(Double.parseDouble(this.txtCompanyDisc.getText()));
-           id.setComplin(this.txtComplain.getText());
+           id.setComplain(this.txtComplain.getText());
            id.setDescription(this.txtDescription.getText());
-        
+           
+           dbo.editItem(id);
+           this.dispose();
+        /*
         boolean result=false;
         if(dbo.checkItem(this.txtItemType.getText(),this.txtItemName.getText())==1)
              result= dbo.EditItem(id);
@@ -426,16 +418,18 @@ public class EditItem extends javax.swing.JFrame {
         }
         if(result==true){
             JOptionPane.showMessageDialog(this, "Successfully update the record !");
+            //ItemTable it =new ItemTable();
+            //it.loadItem();
             this.dispose();
             
-        }
+        }*/
         //else{
             //JOptionPane.showMessageDialog(this, "Error while updating !");
             //this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         //}
             
         
-        }
+        //}
     }//GEN-LAST:event_btnSubmitActionPerformed
 
     private void txtSellingPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSellingPriceActionPerformed
@@ -485,6 +479,8 @@ public class EditItem extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnSubmit;
+    private javax.swing.JComboBox ddCompany;
+    private javax.swing.JComboBox ddItemType;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -502,13 +498,11 @@ public class EditItem extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblItemID;
-    private javax.swing.JTextField txtCompany;
     private javax.swing.JTextField txtCompanyDisc;
     private javax.swing.JTextArea txtComplain;
     private javax.swing.JTextArea txtDescription;
     private javax.swing.JTextField txtGetPrice;
     private javax.swing.JTextField txtItemName;
-    private javax.swing.JTextField txtItemType;
     private javax.swing.JTextField txtLabledPrice;
     private javax.swing.JTextField txtQuantity;
     private javax.swing.JTextField txtSellingDisc;

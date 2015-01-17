@@ -43,9 +43,11 @@ public class ItemTableModel extends AbstractTableModel{
             case 4:
                 return list.get(rowIndex).getQuantity();
             
+            
             default:
                 return "Error";
         }
+        
     }
     
 }

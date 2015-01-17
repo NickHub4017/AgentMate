@@ -40,7 +40,7 @@ public class AgentAccountSetting extends javax.swing.JFrame {
         });
 
         btnSkip.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
-        btnSkip.setText("Skip this Window");
+        btnSkip.setText("Back");
         btnSkip.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSkipActionPerformed(evt);
@@ -150,6 +150,7 @@ public class AgentAccountSetting extends javax.swing.JFrame {
     private void btnSkipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSkipActionPerformed
         AgentSelectionWindow asWindow=new AgentSelectionWindow();
         asWindow.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnSkipActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

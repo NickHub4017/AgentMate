@@ -47,7 +47,7 @@ public class Accountant_New extends javax.swing.JFrame {
             UserDetails ed = new UserDetails();
 
             if (x == 1) {
-                ed.setRegid("accountant");
+                ed.setRegid("accountant","regid");
                 ed.setFirstname(txtFirstname.getText());
                 ed.setLastname(txtLastname.getText());
                 ed.setAge(Integer.parseInt(txtAge.getText().toString()));
@@ -161,6 +161,12 @@ public class Accountant_New extends javax.swing.JFrame {
 
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel8.setText("Comfirm password");
+
+        txtFirstname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFirstnameActionPerformed(evt);
+            }
+        });
 
         txtPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -285,6 +291,10 @@ public class Accountant_New extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btnSubmitActionPerformed
+
+    private void txtFirstnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFirstnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFirstnameActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
