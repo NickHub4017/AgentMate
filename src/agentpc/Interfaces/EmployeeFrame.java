@@ -7,6 +7,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.util.ArrayList;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class EmployeeFrame extends javax.swing.JFrame {
     
@@ -14,6 +15,8 @@ public class EmployeeFrame extends javax.swing.JFrame {
     ArrayList<UserDetails> acList;
     DBOperations dbo=new DBOperations();
     //Accountant_DBOperations dbo2=new Accountant_DBOperations();
+    
+    
     
     public EmployeeFrame() {
         initComponents();
@@ -314,8 +317,19 @@ public class EmployeeFrame extends javax.swing.JFrame {
 
     private void btnUpdateStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateStudentActionPerformed
         UpdateRep updteRep=new UpdateRep();
-        updteRep.setVisible(true);
-        updteRep.setFields(stList.get(tblRep.getSelectedRow()));
+        
+        try{
+             updteRep.setFields(stList.get(tblRep.getSelectedRow()));
+           // updteRep.setFields(dbo.getRep(stList.get(tblRep.getSelectedRow()).getRegid()));
+            
+            updteRep.setVisible(true);
+        }catch(Exception e){
+            System.out.println(e);
+            JOptionPane.showMessageDialog(this, "Please select a row !");
+        }
+        
+        updteRep.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        //this.setVisible(true);
         
         updteRep.addWindowListener(new WindowListener() {
 
@@ -358,8 +372,16 @@ public class EmployeeFrame extends javax.swing.JFrame {
 
     private void btnDeleteStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteStudentActionPerformed
         DeleteRep delStd=new DeleteRep();
-        delStd.setVisible(true);
-        delStd.setFields(stList.get(tblRep.getSelectedRow()));
+        
+        try{
+            delStd.setFields(stList.get(tblRep.getSelectedRow()));
+            delStd.setVisible(true);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Please select a row !");
+        }
+        
+        delStd.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        //this.setVisible(true);
         
         delStd.addWindowListener(new WindowListener() {
 
@@ -403,23 +425,43 @@ public class EmployeeFrame extends javax.swing.JFrame {
 
     private void btnViewStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewStudentActionPerformed
         ViewRep viewStd=new ViewRep();
-        viewStd.setVisible(true);
-        viewStd.setFields(stList.get(tblRep.getSelectedRow()));
-        viewStd.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        //viewStd.setVisible(true);
+        //viewStd.setFields(stList.get(tblRep.getSelectedRow()));
+        try{
+            viewStd.setFields(stList.get(tblRep.getSelectedRow()));
+            viewStd.setVisible(true);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Please select a row !");
+        }
+        viewStd.setDefaultCloseOperation(this.DISPOSE_ON_CLOSE);
+        //this.setVisible(true);
     }//GEN-LAST:event_btnViewStudentActionPerformed
 
     private void btnViewAccountantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewAccountantActionPerformed
         ViewAccountant viewStd=new ViewAccountant();
-        viewStd.setVisible(true);
-        viewStd.setFields(acList.get(tblAccountant.getSelectedRow()));
-        viewStd.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        try{
+            viewStd.setFields(acList.get(tblAccountant.getSelectedRow()));
+            viewStd.setVisible(true);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Please select a row !");
+        }
+        viewStd.setDefaultCloseOperation(this.DISPOSE_ON_CLOSE);
+        
+        this.setVisible(true);
     }//GEN-LAST:event_btnViewAccountantActionPerformed
 
     private void btnUpdateAccountantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateAccountantActionPerformed
         UpdateAccountant updteAcc=new UpdateAccountant();
-        updteAcc.setVisible(true);
-        updteAcc.setFields(acList.get(tblAccountant.getSelectedRow()));
         
+        try{
+            updteAcc.setFields(acList.get(tblAccountant.getSelectedRow()));
+            updteAcc.setVisible(true);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Please select a row !");
+        }
+        
+        updteAcc.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        //this.setVisible(true);
         updteAcc.addWindowListener(new WindowListener() {
 
             @Override
@@ -463,6 +505,7 @@ public class EmployeeFrame extends javax.swing.JFrame {
         Accountant_New newstd=new Accountant_New();
         newstd.setVisible(true);
         newstd.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.setVisible(true);
         
         newstd.addWindowListener(new WindowListener() {
 
@@ -505,8 +548,15 @@ public class EmployeeFrame extends javax.swing.JFrame {
 
     private void btnDeleteAccountantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteAccountantActionPerformed
         DeleteAccountant delStd=new DeleteAccountant();
-        delStd.setVisible(true);
-        delStd.setFields(acList.get(tblAccountant.getSelectedRow()));
+        try{
+            delStd.setFields(acList.get(tblAccountant.getSelectedRow()));
+            delStd.setVisible(true);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Please select a row !");
+        }
+        
+        delStd.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        //this.setVisible(true);
         
         delStd.addWindowListener(new WindowListener() {
 

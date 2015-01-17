@@ -12,6 +12,7 @@ import agentpc.BusinessLogic.UserTableModel;
 import agentpc.DBOperations.DBOperations;
 import java.util.ArrayList;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -30,7 +31,7 @@ public class ItemTable extends javax.swing.JFrame {
     }
     
     void loadItem(){
-        itList=dbo.getItem("item");
+        itList=dbo.getItem("item","itemid");
         ItemTableModel stDetails=new ItemTableModel(itList);
         this.tblItemTable.setModel(stDetails);
     }
@@ -94,6 +95,11 @@ public class ItemTable extends javax.swing.JFrame {
         jLabel1.setText("Store Items");
 
         btnDeleteItem.setText("Delete Item");
+        btnDeleteItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteItemActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -168,11 +174,17 @@ public class ItemTable extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEditItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditItemActionPerformed
-        // TODO add your handling code here:
+        
         EditItem ei=new EditItem();
-        ei.setVisible(true);
-        ei.setFields(itList.get(tblItemTable.getSelectedRow()));
-        ei.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        try{
+            ei.setFields(itList.get(tblItemTable.getSelectedRow()));
+            ei.setVisible(true);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Please select a row !");
+        }
+        
+        ei.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        
         this.setVisible(true);
     }//GEN-LAST:event_btnEditItemActionPerformed
 
@@ -182,6 +194,8 @@ public class ItemTable extends javax.swing.JFrame {
         ni.pack();
         ni.setLocationRelativeTo(null);
         ni.setVisible(true);
+        ni.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        
     }//GEN-LAST:event_btnAddItemActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -197,11 +211,33 @@ public class ItemTable extends javax.swing.JFrame {
     private void btnViewItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewItemActionPerformed
         // TODO add your handling code here:
         ViewItem vi=new ViewItem();
-        vi.setVisible(true);
-        vi.setFields(itList.get(tblItemTable.getSelectedRow()));
-        vi.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-        this.setVisible(true);
+        try{
+            vi.setFields(itList.get(tblItemTable.getSelectedRow()));
+            vi.setVisible(true);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Please select a row !");
+        }
+        vi.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        //this.setVisible(true);
+        
     }//GEN-LAST:event_btnViewItemActionPerformed
+
+    private void btnDeleteItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteItemActionPerformed
+        
+        ItemDetails id;
+        id=itList.get(tblItemTable.getSelectedRow());
+         if(dbo.deleteRecord("item","itemid",id.getItemID())){
+            JOptionPane.showMessageDialog(this, "Successfully deleted!");
+            loadItem();
+            //this.dispose();
+            //return;
+            
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Error while deleting!");
+            this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        }
+    }//GEN-LAST:event_btnDeleteItemActionPerformed
 
     /**
      * @param args the command line arguments

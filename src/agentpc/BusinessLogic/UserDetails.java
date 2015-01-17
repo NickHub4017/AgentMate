@@ -1,19 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package agentpc.BusinessLogic;
 
 import agentpc.DBOperations.DBOperations;
 
-/**
- *
- * @author Namal Jayasuriya
- */
 public class UserDetails {
-    //private String table;
     private String regid;
     private String firstname;
     private String lastname;
@@ -22,6 +11,10 @@ public class UserDetails {
     private String email;
     private String username;
     private String password;
+    private String question;
+    private String answer;
+    private boolean sync;
+
     
     //private static int autoIncrement=1;
     
@@ -35,10 +28,30 @@ public class UserDetails {
         return regid;
     }
 
-    public void setRegid(String table) {
+    public void setRegid(String table, String colomn) {
         
-        this.regid ="AC0"+ dbo.checkRegID(table);
-        //autoIncrement++;
+        if(dbo.checkRegID(table,colomn)<10){
+            if (table=="accountant"){
+                this.regid ="AC0"+ dbo.checkRegID(table,colomn);
+            }
+            else if (table=="rep"){
+                this.regid ="RP0"+ dbo.checkRegID(table,colomn);
+            }
+            else if (table=="agentdetails"){
+                this.regid ="AG0"+ dbo.checkRegID(table,colomn);
+            }
+        }
+        else{
+           if (table=="accountant"){
+            this.regid ="AC"+ dbo.checkRegID(table,colomn);
+            }
+            else if (table=="rep"){
+                this.regid ="RP"+ dbo.checkRegID(table,colomn);
+            }
+            else if (table=="agentdetails"){
+                this.regid ="AG"+ dbo.checkRegID(table,colomn);
+            } 
+        }
     }
     public void setRegID(String regid) {
         this.regid=regid;
@@ -135,4 +148,46 @@ public class UserDetails {
     public void setPassword(String password) {
         this.password = password;
     }  
+
+    /**
+     * @return the question
+     */
+    public String getQuestion() {
+        return question;
+    }
+
+    /**
+     * @param question the question to set
+     */
+    public void setQuestion(String question) {
+        this.question = question;
+    }
+
+    /**
+     * @return the answer
+     */
+    public String getAnswer() {
+        return answer;
+    }
+
+    /**
+     * @param answer the answer to set
+     */
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
+
+    /**
+     * @return the sync
+     */
+    public boolean isSync() {
+        return sync;
+    }
+
+    /**
+     * @param sync the sync to set
+     */
+    public void setSync(boolean sync) {
+        this.sync = sync;
+    }
 }
