@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class DBOperations {
 
     String url = "jdbc:mysql://localhost:3306/agent";
-    String username = "root";
+    String username = "Root";
     String password = "";
     Connection con = null;
     PreparedStatement pst = null;
